@@ -1,6 +1,6 @@
-<form>
-  <div class="angular-inventory-app">
-    <h1 align="center">{{product}}</h1>
-  </div>
-  <button type="button" id="berechnen">BMI berechnen</button>
-</form>
+<div class="inventory-app">
+  <!-- [productList]="products"  input -->
+  <!-- (onProductSelected)="productWasSelected($event)" output -->
+  <app-products-list [productList]="products" (onProductSelected)="productWasSelected($event)">
+  </app-products-list>
+</div>

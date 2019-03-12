@@ -1,25 +1,38 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { Product } from './product.model';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  @Input() product: Product;
+
+  products: Product[];
+
   constructor() {
-    let newProduct = new Product(
-      'NICEHAT',
-      'A Nice Black Hat',
-      '/assets/images/products/black-hat.jpg',
-      ['Men', 'Accessories', 'Hats'],
-      29.99);
-    this.product = newProduct;
+    this.products = [
+      new Product(
+        'MYSHOES',
+        'Black Running Shoes',
+        '/assets/images/products/black-shoes.jpg',
+        ['Men', 'Shoes', 'Running Shoes'],
+        109.99),
+      new Product(
+        'NEATOJACKET',
+        'Blue Jacket',
+        '/assets/images/products/blue-jacket.jpg',
+        ['Women', 'Apparel', 'Jackets & Vests'],
+        238.99),
+      new Product(
+        'NICEHAT',
+        'A Nice Black Hat',
+        '/assets/images/products/black-hat.jpg',
+        ['Men', 'Accessories', 'Hats'],
+        29.99)
+    ];
   }
 
-  setName(name: string) {
-    //this.product.name = name; geht nicht, da read-only
-    this.product = new Product(this.product.sku, name, this.product.imageUrl, this.product.department, this.product.price); // Muss ein neues Object erzeugt werden.
+  productWasSelected(product: Product): void {
+    console.log('Product clicked: ', product);
   }
 }
